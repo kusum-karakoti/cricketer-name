@@ -1,31 +1,41 @@
 #include <stdio.h>
+#include <string.h>
 
 // Define structure
 struct cricket {
     char player_name[50];
-    char team_name[50];
-    float batting_average;
+    int runs;
+    int wickets;
+    int matches;
 };
 
+// Function to add player data
+void addPlayer(struct cricket *p) {
+    printf("Enter name: ");
+    scanf("%s", p->player_name);
+
+    printf("Enter runs: ");
+    scanf("%d", &p->runs);
+
+    printf("Enter wickets: ");
+    scanf("%d", &p->wickets);
+
+    printf("Enter matches: ");
+    scanf("%d", &p->matches);
+}
+
+// Function to display player data
+void displayPlayer(struct cricket p) {
+    printf("\nName: %s | Runs: %d | Wickets: %d | Matches: %d\n",
+           p.player_name, p.runs, p.wickets, p.matches);
+}
+
+// Main function
 int main() {
-    // Declare structure variable
-    struct cricket player1;
-
-    // Access members using dot operator
-    printf("Enter player name: ");
-    scanf("%s", player1.player_name);
-
-    printf("Enter team name: ");
-    scanf("%s", player1.team_name);
-
-    printf("Enter batting average: ");
-    scanf("%f", &player1.batting_average);
-
-    // Display structure data
-    printf("\n--- Player Details ---\n");
-    printf("Player Name: %s\n", player1.player_name);
-    printf("Team Name: %s\n", player1.team_name);
-    printf("Batting Average: %.2f\n", player1.batting_average);
-
+    struct cricket p1;
+    
+    addPlayer(&p1);
+    displayPlayer(p1);
+    
     return 0;
 }
